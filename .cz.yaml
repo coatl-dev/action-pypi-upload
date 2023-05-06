@@ -1,0 +1,9 @@
+---
+commitizen:
+  gpg_sign: true
+  name: cz_conventional_commits
+  tag_format: v$version
+  update_changelog_on_bump: true
+  version: 0.1.0rc0
+  version_files:
+  - README.md

@@ -1,0 +1,102 @@
+name: main
+
+on:
+  pull_request:
+  push:
+    branches:
+      - coatl
+
+env:
+  devpi-password: changeme
+  devpi-username: root
+  devpi-port: 3141
+
+jobs:
+  self-test:
+    runs-on: ubuntu-latest
+
+    services:
+      devpi:
+        image: muccg/devpi
+        env:
+          DEVPI_PASSWORD: ${{ env.devpi-password }}
+        ports:
+          - 3141
+
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          path: test
+
+      - name: Create the package directory
+        run: |
+          mkdir -pv src/test-package
+
+      - name: Create `__init__.py`
+        run: |
+          echo '__version__ = "0.0.1"' > src/test-package/__init__.py
+
+      - name: Create `README.md`
+        run: |
+          echo "# Test Package" > README.md
+
+      - name: Create `pyproject.toml`
+        run: |
+          echo "$PYPROJECT_TOML" > pyproject.toml
+        env:
+          PYPROJECT_TOML: |
+            [build-system]
+            build-backend = "setuptools.build_meta"
+            requires = [
+              "setuptools>=42",
+              "wheel",
+            ]
+
+      - name: Create `setup.cfg`
+        run: |
+          echo "$SETUP_CFG" > setup.cfg
+        env:
+          SETUP_CFG: |
+            [metadata]
+            name = test_package
+            version = 0.0.1
+            description = Test package
+            long_description = file: README.md
+            long_description_content_type = text/markdown
+            url = https://github.com/coatl-dev/action-pypi-upload
+            author = César Román
+            author_email = cesar@coatl.dev
+            classifiers =
+                Development Status :: 3 - Alpha
+                Intended Audience :: Developers
+                License :: OSI Approved :: MIT License
+                Operating System :: POSIX :: Linux
+                Programming Language :: Python
+                Programming Language :: Python :: 2
+                Programming Language :: Python :: 2 :: Only
+                Programming Language :: Python :: 2.7
+                Topic :: Software Development :: Libraries :: Python Modules
+
+            [options]
+            packages = find:
+            python_requires = ==2.7.18
+            package_dir =
+                =src
+
+            [options.packages.find]
+            where = src
+
+      - name: Test action
+        uses: ./test
+        env:
+          DEBUG: true
+          PATH: utter-nonsense
+        with:
+          user: ${{ env.devpi-username }}
+          password: ${{ env.devpi-password }}
+          register: yes
+          verbose: yes
+          url: http://devpi:${{ env.devpi-port }}/${{ env.devpi-username }}/public/
