@@ -1,4 +1,4 @@
-name: python2-pypi-upload
+name: python2-pypi-build-upload
 description: Upload Python 2 distribution packages to PyPI
 inputs:
   user:
