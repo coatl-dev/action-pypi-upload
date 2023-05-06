@@ -1,7 +1,7 @@
 # pypi-upload
 
-GitHub action for publishing your Python 2 distribution files to PyPI or any
-other repository.
+GitHub action for building and publishing your Python 2 distribution files to
+PyPI or any other repository using `build` and `twine`.
 
 ## Usage
 
