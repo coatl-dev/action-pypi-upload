@@ -1,11 +1,16 @@
 FROM python:2.7-slim
 
-LABEL "maintainer" "César Román <cesar@coatl.dev"
-LABEL "repository" "https://github.com/coatl-dev/pypi-upload"
-LABEL "homepage" "https://github.com/coatl-dev/pypi-upload"
+LABEL \
+  maintainer="César Román <cesar@coatl.dev>" \
+  repository="https://github.com/coatl-dev/pypi-upload" \
+  homepage="https://github.com/marketplace/actions/python2-pypi-build-upload" \
+  vendor="coatl.dev"
 
 RUN \
-    python -m pip install --no-cache-dir --no-python-version-warning --upgrade pip build twine
+    python -m pip install --no-cache-dir \
+      --no-python-version-warning pip==20.3.4 && \
+    python -m pip install --no-cache-dir \
+      --no-python-version-warning --requirement requirements.txt
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
