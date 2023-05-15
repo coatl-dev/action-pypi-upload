@@ -1,21 +1,20 @@
-name: python2-pypi-build-upload
-description: Upload Python 2 distribution packages to PyPI
+name: python2-pypi-upload
+description: Build and upload Python 2 distribution packages.
 inputs:
-  user:
-    description: PyPI user
+  username:
+    description: >-
+      The username to authenticate to the repository (package index) as.
     required: false
     default: __token__
   password:
-    description: Password for your PyPI user or an access token
+    description:  >-
+      The password to authenticate to the repository (package index) with.
     required: true
   url:
-    description: The repository URL to use
+    description: >-
+      The repository (package index) URL to upload the package to.
     required: false
     default: https://upload.pypi.org/legacy/
-  outdir:
-    description: The build output directory
-    required: false
-    default: dist
   check:
     description: Check metadata with twine before uploading
     required: false
@@ -26,10 +25,6 @@ inputs:
       Internal use only.
     required: false
     default: no
-  verbose:
-    description: Show verbose output when uploading with twine
-    required: false
-    default: no
 branding:
   color: green
   icon: upload-cloud
@@ -37,10 +32,8 @@ runs:
   using: docker
   image: Dockerfile
   args:
-    - ${{ inputs.user }}
+    - ${{ inputs.username }}
     - ${{ inputs.password }}
     - ${{ inputs.url }}
-    - ${{ inputs.outdir }}
     - ${{ inputs.check }}
     - ${{ inputs.register }}
-    - ${{ inputs.verbose }}
