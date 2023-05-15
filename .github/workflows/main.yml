@@ -95,8 +95,7 @@ jobs:
           DEBUG: true
           PATH: utter-nonsense
         with:
-          user: ${{ env.devpi-username }}
+          username: ${{ env.devpi-username }}
           password: ${{ env.devpi-password }}
           register: yes
-          verbose: yes
           url: http://devpi:${{ env.devpi-port }}/${{ env.devpi-username }}/public/
