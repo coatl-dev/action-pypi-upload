@@ -18,7 +18,7 @@ on:
 
 jobs:
   main:
-    uses: coatl-dev/action-pypi-upload@v0.1.3
+    uses: coatl-dev/action-pypi-upload@v0.1.4
     with:
       password: ${{ secrets.PYPI_API_TOKEN }}
 ```
@@ -27,7 +27,7 @@ jobs:
 
 ```yml
 - name: Publish package to TestPyPI
-  uses: coatl-dev/action-pypi-upload@v0.1.3
+  uses: coatl-dev/action-pypi-upload@v0.1.4
   with:
     username: ${{ secrets.TEST_PYPI_USER }}
     password: ${{ secrets.TEST_PYPI_API_TOKEN }}
@@ -49,7 +49,7 @@ it with:
 The full syntax for this action is:
 
 ```yml
-  uses: coatl-dev/action-pypi-upload@v0.1.3
+  uses: coatl-dev/action-pypi-upload@v0.1.4
   with:
     username: "__token__" # string. Defaults to '__token__'. Optional.
     password: # string. Required. It can be a password or token. It is recommended to keep your password as secrets.
