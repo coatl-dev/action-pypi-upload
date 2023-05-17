@@ -1,3 +1,9 @@
+## v0.2.0 (2023-05-16)
+
+### Feat
+
+- **pip**: implement secure installs (#7)
+
 ## v0.1.4 (2023-05-15)
 
 ### Refactor
