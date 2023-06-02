@@ -1,3 +1,9 @@
+## v1.0.0 (2023-06-02)
+
+### Refactor
+
+- **dockerfile**: update labels (#9)
+
 ## v0.2.0 (2023-05-16)
 
 ### Feat
