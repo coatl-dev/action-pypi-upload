@@ -17,10 +17,16 @@ on:
       - published
 
 jobs:
-  main:
-    uses: coatl-dev/action-pypi-upload@v0.2.0
-    with:
-      password: ${{ secrets.PYPI_API_TOKEN }}
+  pypi-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: python2-pypi-upload
+        uses: coatl-dev/action-pypi-upload@v0.2.0
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN_IGNITION_API_PKG }}
 ```
 
 ## Uploading to TestPyPI
