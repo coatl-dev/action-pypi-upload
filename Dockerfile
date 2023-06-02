@@ -2,8 +2,8 @@ FROM python:2.7-slim
 
 LABEL \
   maintainer="César Román <cesar@coatl.dev>" \
-  repository="https://github.com/coatl-dev/pypi-upload" \
-  homepage="https://github.com/marketplace/actions/python2-pypi-build-upload" \
+  repository="https://github.com/coatl-dev/action-pypi-upload" \
+  homepage="https://github.com/marketplace/actions/python2-pypi-upload" \
   vendor="coatl.dev"
 
 COPY requirements.txt /tmp/
