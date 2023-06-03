@@ -1,3 +1,9 @@
+## v1.1.0 (2023-06-03)
+
+### Feat
+
+- **action**: add upload input (#10)
+
 ## v1.0.0 (2023-06-02)
 
 ### Refactor
