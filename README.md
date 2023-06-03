@@ -50,6 +50,16 @@ it with:
      check: no
 ```
 
+## Disabling automatically uploading the package
+
+If you would like to run additional checks before uploading, you can disable it
+with:
+
+```yml
+   with:
+     upload: no
+```
+
 ## Full syntax
 
 The full syntax for this action is:
@@ -61,4 +71,5 @@ The full syntax for this action is:
     password: # string. Required. It can be a password or token. It is recommended to keep your password as secrets.
     url: "https://upload.pypi.org/legacy/" # string. Defaults to 'https://upload.pypi.org/legacy/'. Optional.
     check: "yes" # string. Defaults to 'yes'. Options: 'yes', 'no'. Optional.
+    upload: "yes" # string. Defaults to 'yes'. Options: 'yes', 'no'. Optional.
 ```
