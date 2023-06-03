@@ -16,7 +16,13 @@ inputs:
     required: false
     default: https://upload.pypi.org/legacy/
   check:
-    description: Check metadata with twine before uploading
+    description: Check metadata with twine before uploading.
+    required: false
+    default: yes
+  upload:
+    description: >-
+      Upload automatically.
+      Set it to "no" if you would like to upload manually.
     required: false
     default: yes
   register:
@@ -36,4 +42,5 @@ runs:
     - ${{ inputs.password }}
     - ${{ inputs.url }}
     - ${{ inputs.check }}
+    - ${{ inputs.upload }}
     - ${{ inputs.register }}
