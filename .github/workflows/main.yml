@@ -98,4 +98,4 @@ jobs:
           username: ${{ env.devpi-username }}
           password: ${{ env.devpi-password }}
           register: yes
-          url: http://devpi:${{ env.devpi-port }}/${{ env.devpi-username }}/public/
+          url: http://devpi:${{ env.devpi-port }}/${{ env.devpi-username }}/pypi/
