@@ -17,7 +17,7 @@ jobs:
 
     services:
       devpi:
-        image: coatldev/devpi
+        image: coatldev/devpi:latest
         env:
           DEVPI_PASSWORD: ${{ env.devpi-password }}
         ports:
@@ -98,4 +98,4 @@ jobs:
           username: ${{ env.devpi-username }}
           password: ${{ env.devpi-password }}
           register: yes
-          url: http://devpi:${{ env.devpi-port }}/${{ env.devpi-username }}/pypi/
+          url: http://devpi:${{ env.devpi-port }}/${{ env.devpi-username }}/public/
