@@ -17,7 +17,7 @@ jobs:
 
     services:
       devpi:
-        image: muccg/devpi
+        image: coatldev/devpi
         env:
           DEVPI_PASSWORD: ${{ env.devpi-password }}
         ports:
