@@ -1,3 +1,10 @@
+## v1.1.1 (2023-07-13)
+
+### Refactor
+
+- revert dependabot pip check (#22)
+- **dockerfile**: reorganize pip requirements (#16)
+
 ## v1.1.0 (2023-06-03)
 
 ### Feat

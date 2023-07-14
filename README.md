@@ -65,7 +65,7 @@ with:
 The full syntax for this action is:
 
 ```yml
-  uses: coatl-dev/action-pypi-upload@v1
+  uses: coatl-dev/action-pypi-upload@v1.1.1 # or @v1
   with:
     username: "__token__" # string. Defaults to '__token__'. Optional.
     password: # string. Required. It can be a password or token. It is recommended to keep your password as secrets.
