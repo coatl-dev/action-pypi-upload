@@ -13,7 +13,18 @@ env:
   devpi-port: 3141
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Lint Dockerfile
+        uses: hadolint/hadolint-action@v3.1.0
+
   self-test:
+    needs: lint
     runs-on: ubuntu-latest
 
     services:
@@ -38,7 +49,7 @@ jobs:
 
       - name: Create `__init__.py`
         run: |
-          echo '__version__ = "0.0.1"' > src/test-package/__init__.py
+          echo '__version__ = "0.0.1a0"' > src/test-package/__init__.py
 
       - name: Create `README.md`
         run: |
@@ -63,7 +74,7 @@ jobs:
           SETUP_CFG: |
             [metadata]
             name = test_package
-            version = 0.0.1
+            version = 0.0.1a0
             description = Test package
             long_description = file: README.md
             long_description_content_type = text/markdown

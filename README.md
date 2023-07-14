@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: python2-pypi-upload
-        uses: coatl-dev/action-pypi-upload@v1.1.0
+        uses: coatl-dev/action-pypi-upload@v1
         with:
           password: ${{ secrets.PYPI_API_TOKEN_IGNITION_API_PKG }}
 ```
@@ -33,7 +33,7 @@ jobs:
 
 ```yml
 - name: Publish package to TestPyPI
-  uses: coatl-dev/action-pypi-upload@v1.1.0
+  uses: coatl-dev/action-pypi-upload@v1
   with:
     username: ${{ secrets.TEST_PYPI_USER }}
     password: ${{ secrets.TEST_PYPI_API_TOKEN }}
@@ -65,7 +65,7 @@ with:
 The full syntax for this action is:
 
 ```yml
-  uses: coatl-dev/action-pypi-upload@v1.1.0
+  uses: coatl-dev/action-pypi-upload@v1
   with:
     username: "__token__" # string. Defaults to '__token__'. Optional.
     password: # string. Required. It can be a password or token. It is recommended to keep your password as secrets.
