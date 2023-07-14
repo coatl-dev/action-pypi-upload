@@ -6,13 +6,13 @@ LABEL \
   homepage="https://github.com/marketplace/actions/python2-pypi-upload" \
   vendor="coatl.dev"
 
-COPY requirements.txt /tmp/
-RUN \
-    python -m pip install --no-cache-dir \
-      --no-python-version-warning pip==20.3.4 && \
-    python -m pip install --no-cache-dir \
-      --no-python-version-warning --requirement /tmp/requirements.txt
-COPY . /tmp/
+ENV PIP_NO_CACHE_DIR 1
+ENV PIP_NO_PYTHON_VERSION_WARNING 1
+
+COPY requirements /tmp/requirements/
+RUN set -eux; \
+    python -m pip install --requirement /tmp/requirements/base.txt; \
+    python -m pip install --requirement /tmp/requirements/packaging.txt
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
